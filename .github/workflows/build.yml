@@ -1,0 +1,24 @@
+name: Build
+on: push
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Checkout
+        id: find_project
+        run: |
+          $yypFile = Get-ChildItem -Path . -Include *.yyp -Recurse | Select-Object -First 1
+          Write-Host "::set-output name=path::$($yypFile.FullName)"
+      - uses: bscotch/igor-setup@v1
+        with:
+          version: latest
+      - name: Build
+        uses: bscotch/igor-build@v1
+        with:
+          project: ${{ steps.find_project.outputs.path }}
+          target: android
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Build
+          path: ./Build
