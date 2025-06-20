@@ -9,7 +9,7 @@ jobs:
       - name: Build
         uses: bscotch/igor-build@v1
         with:
-          yyp-path: "refs/heads/main/PizzaTower_Deggcomplantedshaderless3whydiditcorruptatthelastupdate.yyp"
+          yyp-path: "$(Build.SourcesDirectory)/PizzaTower_Deggcomplantedshaderless3whydiditcorruptatthelastupdate.yyp"
           platform: android
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
