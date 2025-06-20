@@ -6,10 +6,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        id: find_project
-        run: |
-          $yypFile = Get-ChildItem -Path . -Include *.yyp -Recurse | Select-Object -First 1
-          Write-Host "::set-output name=path::$($yypFile.FullName)"
+        with: 
+          run: |
+            $yypFile = Get-ChildItem -Path . -Include *.yyp -Recurse | Select-Object -First 1
+            Write-Host "::set-output name=path::$($yypFile.FullName)"
       - name: Build
         uses: bscotch/igor-build@v1
         with:
