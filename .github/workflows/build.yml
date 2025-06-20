@@ -15,7 +15,7 @@ jobs:
         uses: bscotch/igor-build@v1
         with:
           yyp-path: ${{ steps.find_project.outputs.path }}
-          target: android
+          platform: android
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
