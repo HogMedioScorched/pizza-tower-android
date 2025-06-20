@@ -6,6 +6,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        id: find_project
         with: 
           run: |
             $yypFile = Get-ChildItem -Path . -Include *.yyp -Recurse | Select-Object -First 1
